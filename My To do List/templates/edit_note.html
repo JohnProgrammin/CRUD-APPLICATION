@@ -1,0 +1,74 @@
+<!-- edit_note.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Note</title>
+</head>
+<style>
+    body{
+        width: 100%;
+        margin: 40vh auto 0vh auto;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    input{
+        width: 500px;
+        border: none;
+        outline: none;
+        padding: 7px;
+        font-size: 20px;
+    }
+    button{
+        color: white;
+        background-color: crimson;
+        border: none;
+        padding: 7px;
+        font-size: 20px;
+        margin-bottom: 50px;
+        transition: all ease 0.3s 0s;
+    }
+    button:hover{
+        background-color: rgb(55, 14, 22);
+    }
+    h1{
+        width: 100%;
+        text-align: center;
+        color: black;
+        font-family: sans-serif;
+    }
+    //h1 hr{
+        width: 150px;
+        margin: 0px auto 20px auto;
+        height: 5px;
+        border: none;
+        background-color: rgb(0, 0, 0);
+        animation: hr normal ease 2s;
+    }
+    @keyframes hr {
+        0%{
+            width: 5px;
+        }
+        50%{
+            width: 250px;
+        }
+        100%{
+            width: 150px;
+        }
+    }
+    .plate{
+        background-color: rgb(53, 49, 49);
+        padding: 50px;
+    }
+</style>
+<body>
+    <div class="plate">
+    <h1>Edit Note <hr></h1>
+    <form method="POST" action="/update/{{ note.id }}">
+        <input type="text" name="content" value="{{ note.content }}" placeholder="Edit your note">
+        <button type="submit">Update Note</button>
+    </form>
+</div>
+</body>
+</html>

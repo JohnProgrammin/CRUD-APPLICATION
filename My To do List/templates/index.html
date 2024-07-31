@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notepad</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+    }
+    body{
+    width: 100%;
+    background-color: black;
+    }
+    input, button{
+        font-size: 20px;
+        padding: 7px;
+        outline: none;
+        border: none;
+    }
+    button{
+        color: white;
+        background-color: rgb(120, 20, 220);
+        border: none;
+        padding: 7px;
+        font-size: 20px;
+        margin-bottom: 50px;
+        transition: all ease 0.3s 0s;
+    }
+    button:hover{
+        background-color: rgb(0, 0, 0);
+    }
+    a button{
+        color: white;
+        background-color: crimson;
+        border: none;
+        padding: 10px;
+        font-size: 15px;
+        margin-bottom: 50px;
+        transition: all ease 0.3s 0s;
+    }
+    h1{
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-family: sans-serif;
+        display: block;
+    }
+    ul{
+        list-style-type: square;
+        padding: none;
+        color: black;
+        margin: 0px 0px 70px 0px;
+    }
+    ul li{
+        margin: 0px 0px 5px 0px;
+        font-family: sans-serif;
+    }
+    ul a{
+        text-decoration: none;
+        color: rgb(103, 103, 84);
+        margin: 0px 0px 0px 10px;
+        transition: all ease 0.3s 0s;
+    }
+    ul a:hover{
+        color: rgb(255, 255, 255);
+    }
+    .plate{
+        width: 100%;
+        background-color: rgb(62, 61, 61);
+        padding: 50px;
+    }
+    h1 hr{
+        width: 180px;
+        margin: 0px auto 20px auto;
+        height: 5px;
+        border: none;
+        background-color: crimson;
+        animation: hr normal ease 2s;
+    }
+    @keyframes hr {
+        0%{
+            width: 5px;
+        }
+        50%{
+            width: 250px;
+            background-color: gold;
+        }
+        100%{
+            width: 180px;
+        }
+    }
+</style>
+<body>
+    <div class="plate">
+    <h1>MyNotes <hr></h1><br>
+    <form method="POST" action="/add">
+        <input type="text" name="content" placeholder="Enter your note">
+        <button type="submit">Add Note</button>
+    </form>
+    <ul>
+        {% for note in notes %}
+            <li>{{ note.content }} <a href="{{ url_for('edit_note', note_id=note.id) }}"><button>Edit</button></a><a href="{{ url_for('delete_note', note_id=note.id) }}"><button>Delete</button></a></li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
